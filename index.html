@@ -7,6 +7,24 @@
 <meta name="description" content="山河问鼎·九州宏图 - 一款古风三维策略游戏，六大诸侯国争霸九州，招募士兵、发展经济、研究科技、攻城略地，问鼎天下。">
 <meta name="keywords" content="策略游戏,三国,古风,3D游戏,slg,山河问鼎,九州宏图">
 <title>山河问鼎 · 九州宏图 三维战略游戏</title>
+<script>
+// 在页面最开始就彻底阻止右键手势，不等任何脚本加载
+(function(){
+  function stop(e){e.preventDefault();e.stopPropagation&&e.stopPropagation();return false;}
+  document.addEventListener('contextmenu',stop,true);
+  document.addEventListener('mousedown',function(e){if(e.button===2)stop(e);},true);
+  document.addEventListener('mousemove',function(e){if(e.buttons&2)stop(e);},true);
+  document.addEventListener('mouseup',function(e){if(e.button===2)stop(e);},true);
+  document.addEventListener('dragstart',stop,true);
+  document.addEventListener('selectstart',stop,true);
+  document.addEventListener('gesturestart',stop,true);
+  document.addEventListener('MSGestureStart',stop,true);
+  document.addEventListener('MSGestureChange',stop,true);
+  // 阻止历史导航手势
+  if(history&&history.scrollRestoration)history.scrollRestoration='manual';
+  window.addEventListener('popstate',function(e){e.preventDefault();},true);
+})();
+</script>
 <style>
 :root{--ink:#edf0dd;--dim:#adbbb0;--gold:#dfbd75;--edge:#c2aa6748;--panel:#112522ed;--blue:#72b9bc;--red:#d78070;--purple:#9b7fb8}
 *{box-sizing:border-box}
@@ -165,7 +183,7 @@ small,.muted{color:var(--dim)}
 @media(max-width:900px){.topbar{padding:8px;gap:7px;min-height:62px}.logo{font-size:17px;letter-spacing:1px}#calendar{font-size:10px}#resources{gap:7px}.res b{font-size:11px}.res small{font-size:9px}#realm{display:none}#quickbar{left:8px;right:8px;top:70px}#quickbar button{padding:5px 7px;font-size:10px}#inspector{right:8px;top:115px;width:245px;max-height:calc(100% - 198px)}#guide{left:8px;bottom:81px;width:235px}#minimapBox{display:none}#endbar{left:8px;right:8px;bottom:8px}#logs{display:none}.startbox{padding:20px}.starttitle{font-size:32px}#factionCards{grid-template-columns:1fr 1fr}.factioncard{min-height:175px;padding:12px}.factioncard p{margin-top:6px;font-size:11px}.factioncard small{margin-top:6px}.startsub{font-size:11px;margin-bottom:15px}.startfoot{margin-top:14px;flex-wrap:wrap}#battleCommands{min-width:95vw;padding:9px}#battleCommands button{font-size:11px;padding:6px}.startnote{margin-top:10px}#orderHint{top:112px;width:90vw;font-size:11px}}
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 <canvas id="view"></canvas>
 <div id="labels"></div>
 
