@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#172a29">
 <meta name="description" content="山河问鼎·九州宏图 - 一款古风三维策略游戏，六大诸侯国争霸九州，招募士兵、发展经济、研究科技、攻城略地，问鼎天下。">
 <meta name="keywords" content="策略游戏,三国,古风,3D游戏,slg,山河问鼎,九州宏图">
@@ -180,8 +180,7 @@ small,.muted{color:var(--dim)}
 #weatherIcon{display:inline-block;width:18px;height:18px;vertical-align:middle;margin-right:4px}
 @media(max-width:1250px){#realm{width:212px}#inspector{width:270px}#quickbar{left:240px;right:300px}.topbar{gap:12px}.logo small{display:none}#resources{gap:10px}#guide{width:280px}#endbar{left:310px}#logs{left:310px}#musicCtrl{left:16px}}
 @media(max-height:760px){#realm{max-height:calc(100% - 290px)}#inspector{max-height:calc(100% - 340px)}#minimapBox{height:180px;width:160px}#minimap{width:144px;height:144px}#realmStats{margin:5px 0}#guide{padding:11px}#guideText{min-height:40px;font-size:11px}#endbar{right:210px}}
-@media(max-width:900px){.topbar{padding:6px 8px;gap:7px;min-height:58px}.logo{font-size:15px;letter-spacing:1px}#calendar{font-size:10px}#resources{gap:7px;flex-wrap:wrap}.res b{font-size:11px}.res small{font-size:9px}#realm{display:none;left:8px;top:104px;width:min(300px,88vw);max-height:46vh;z-index:70}#realm.open{display:block}#quickbar{left:8px;right:8px;top:64px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}#quickbar button{padding:5px 8px;font-size:10px;white-space:nowrap;flex:0 0 auto}#inspector{right:8px;top:104px;width:min(258px,62vw);max-height:44vh;padding:12px}#inspectTitle{font-size:17px}#inspectDesc{font-size:10px;line-height:1.6}#guide{left:8px;bottom:122px;width:min(250px,78vw);padding:11px}#minimapBox{display:none}#endbar{left:8px;right:8px;bottom:8px;min-height:52px}#logs{display:none}#musicCtrl{left:8px;bottom:80px;padding:5px 8px;gap:6px}#musicCtrl .volSlider{width:54px}#musicCtrl .musicName{display:none}#sfxVol{width:36px!important}#battleNote{max-width:44vw;font-size:11px;bottom:100px}#battleCommands{min-width:95vw;padding:9px}#battleCommands button{font-size:11px;padding:6px}.startbox{padding:16px}.starttitle{font-size:30px;letter-spacing:8px}#factionCards{grid-template-columns:1fr 1fr;gap:8px}.factioncard{min-height:150px;padding:11px}.factioncard h3{font-size:19px}.factioncard p{margin-top:6px;font-size:11px}.factioncard small{margin-top:6px}.startsub{font-size:11px;margin-bottom:15px;letter-spacing:2px}.startfoot{margin-top:14px;flex-wrap:wrap}.startnote{margin-top:10px}#orderHint{top:112px;width:92vw;font-size:11px}#toast{top:64px}}
-@media(max-width:520px){#factionCards{grid-template-columns:1fr}.starttitle{font-size:26px}#advance{min-width:92px;font-size:14px}#turnStatus{font-size:10px}#inspectStats{gap:4px}#inspectStats div{padding:5px}}
+@media(max-width:900px){.topbar{padding:8px;gap:7px;min-height:62px}.logo{font-size:17px;letter-spacing:1px}#calendar{font-size:10px}#resources{gap:7px}.res b{font-size:11px}.res small{font-size:9px}#realm{display:none}#quickbar{left:8px;right:8px;top:70px}#quickbar button{padding:5px 7px;font-size:10px}#inspector{right:8px;top:115px;width:245px;max-height:calc(100% - 198px)}#guide{left:8px;bottom:81px;width:235px}#minimapBox{display:none}#endbar{left:8px;right:8px;bottom:8px}#logs{display:none}.startbox{padding:20px}.starttitle{font-size:32px}#factionCards{grid-template-columns:1fr 1fr}.factioncard{min-height:175px;padding:12px}.factioncard p{margin-top:6px;font-size:11px}.factioncard small{margin-top:6px}.startsub{font-size:11px;margin-bottom:15px}.startfoot{margin-top:14px;flex-wrap:wrap}#battleCommands{min-width:95vw;padding:9px}#battleCommands button{font-size:11px;padding:6px}.startnote{margin-top:10px}#orderHint{top:112px;width:90vw;font-size:11px}}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
@@ -224,7 +223,6 @@ small,.muted{color:var(--dim)}
     <button data-ui="territory">疆域</button>
     <button data-ui="weather">天气</button>
     <button data-ui="guide">引导</button>
-    <button data-ui="realm">内政</button>
     <button data-ui="save">保存</button>
     <button data-ui="help">军政手册</button>
   </nav>
@@ -282,7 +280,7 @@ small,.muted{color:var(--dim)}
       <button id="continueBtn">继续上次征程</button>
       <button id="importStart">导入存档</button>
     </div>
-    <p class="startnote">点击势力入局。左键拖动旋转视角，Shift+左键（或中键）拖动平移，滚轮缩放；双击城名近看建筑。WASD移动，QE旋转，空格结束本旬。手机端：单指拖动旋转，双指捏合缩放，轻点选取。</p>
+    <p class="startnote">点击势力入局。左键拖动平移，右键拖动旋转，滚轮缩放；双击城名近看建筑。WASD移动，QE旋转，空格结束本旬。</p>
   </div>
 </div>
 
@@ -799,7 +797,7 @@ window.onunhandledrejection=function(e){
 
     bootProgress("砌筑青砖、瓦顶与关城",34);
     renderer=new T.WebGLRenderer({canvas:$("view"),antialias:true,powerPreference:"high-performance"});
-    renderer.setPixelRatio(Math.min(devicePixelRatio||1,innerWidth<900?1.15:1.4));
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.4));
     renderer.setSize(innerWidth,innerHeight,false);
     // 强制设置canvas尺寸，避免CSS覆盖
     $("view").style.width=innerWidth+"px";
@@ -2038,45 +2036,21 @@ window.onunhandledrejection=function(e){
     document.addEventListener("dragstart",e=>e.preventDefault());
     document.addEventListener("selectstart",e=>e.preventDefault());
 
-    const activePointers=new Map();
-    let pinchState=null;
     $("view").addEventListener("pointerdown",e=>{
       if(B||!S)return;
-      if(e.button===1)e.preventDefault(); // 阻止中键自动滚动
-      activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
-      orbit.goal=null;
-      $("view").setPointerCapture(e.pointerId);
-      if(activePointers.size===2){
-        // 双指捏合：进入缩放模式
-        const pts=[...activePointers.values()];
-        pinchState={d0:Math.max(20,Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y)),dist0:orbit.distance};
-        inputPointer=null;
-        return;
-      }
-      if(activePointers.size>2)return;
       inputPointer={id:e.pointerId,x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY,button:e.button,moved:false};
+      $("view").setPointerCapture(e.pointerId);
+      orbit.goal=null;
       if(e.button===2)e.preventDefault();
     });
     $("view").addEventListener("pointermove",e=>{
-      if(activePointers.has(e.pointerId))activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
-      // 双指捏合缩放
-      if(pinchState&&activePointers.size>=2){
-        const pts=[...activePointers.values()];
-        const d=Math.max(20,Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y));
-        orbit.goal=null;
-        orbit.distance=clamp(pinchState.dist0*pinchState.d0/d,15,720);
-        updateCamera();
-        return;
-      }
       if(!inputPointer||B)return;
       const p=inputPointer,dx=e.clientX-p.x,dy=e.clientY-p.y;
       if(Math.hypot(e.clientX-p.sx,e.clientY-p.sy)>5)p.moved=true;
-      if((p.button===0&&!e.shiftKey)||p.button===2){
-        // 左键（或右键）拖动：旋转视角
+      if(p.button===2||e.shiftKey){
         orbit.yaw-=dx*.005;orbit.pitch+=dy*.004;
         e.preventDefault();
       }else{
-        // Shift+左键 / 中键拖动：平移视角
         const scale=orbit.distance*.0012;
         orbit.target.x+=(-dx*Math.cos(orbit.yaw)+dy*Math.sin(orbit.yaw))*scale;
         orbit.target.z+=(dx*Math.sin(orbit.yaw)+dy*Math.cos(orbit.yaw))*scale;
@@ -2085,19 +2059,13 @@ window.onunhandledrejection=function(e){
       p.x=e.clientX;p.y=e.clientY;updateCamera();
     });
     $("view").addEventListener("pointerup",e=>{
-      activePointers.delete(e.pointerId);
-      if(activePointers.size<2)pinchState=null;
       if(!inputPointer)return;
       const p=inputPointer;inputPointer=null;
       try{$("view").releasePointerCapture(e.pointerId)}catch(error){}
       if(!p.moved&&p.button===0&&!B)terrainPick(e);
       if(p.button===2)e.preventDefault();
     });
-    $("view").addEventListener("pointercancel",e=>{
-      activePointers.delete(e.pointerId);
-      if(activePointers.size<2)pinchState=null;
-      inputPointer=null;
-    });
+    $("view").addEventListener("pointercancel",()=>inputPointer=null);
     $("view").addEventListener("wheel",e=>{
       e.preventDefault();
       if(B)return;
@@ -2186,16 +2154,6 @@ window.onunhandledrejection=function(e){
       renderHUD();renderInspector();renderGuide();syncArmies();miniDirty=true;renderTech();renderDiplo();
     }
 
-    // 应用选中状态（无有效选中时默认选中都城，避免右侧出现空面板）
-    function applySelection(sel){
-      if(!S)return;
-      if(sel&&sel.kind==="site"&&S.sites[sel.id])activeSelection=sel;
-      else if(sel&&sel.kind==="army"&&S.armies.find(a=>a.id===sel.id))activeSelection=sel;
-      else if(sel&&sel.kind==="tile")activeSelection=sel;
-      else activeSelection={kind:"site",id:F[S.player].cap};
-      S.selected=activeSelection;selectOutline();renderInspector();drawRouteForSelection();
-    }
-
     // HUD渲染
     function renderHUD(){
       if(!S)return;
@@ -2226,10 +2184,8 @@ window.onunhandledrejection=function(e){
 
     // 检查器渲染
     function renderInspector(){
-      const insp=$("inspector");
-      if(!S||!activeSelection){insp.style.display="none";return}
-      insp.style.display="";
-      const a=insp,st=$("inspectStats");
+      if(!S||!activeSelection)return;
+      const a=$("inspectActions"),st=$("inspectStats");
       if(activeSelection.kind==="site"){
         const s=S.sites[activeSelection.id],mine=s.owner===S.player;
         $("inspectKicker").textContent=typeName[s.type]+" · "+Math.round(s.x+HALF)+","+Math.round(s.z+HALF);
@@ -3290,8 +3246,6 @@ window.onunhandledrejection=function(e){
         weather.type=types[Math.floor(random()*types.length)];
         weather.days=3+Math.floor(random()*5);
       }
-      // 同步到游戏状态，保证存档读档后天气一致
-      if(S)S.weather={type:weather.type,days:weather.days};
       // 天气效果
       if(weather.type==="rain"){
         // 雨水增加粮食
@@ -3353,10 +3307,8 @@ window.onunhandledrejection=function(e){
         const data=localStorage.getItem(SAVE_KEY);
         if(!data)return false;
         S=JSON.parse(data);
-        if(!S||S.version!==4){migrateSave();return false}
+        if(S.version!==4){migrateSave();return true}
         initializeOwners();
-        // 恢复天气状态
-        weather={type:(S.weather&&S.weather.type)||"clear",intensity:0,days:(S.weather&&S.weather.days)||0};
         // 重建已开发农田
         for(let i=0;i<TOTAL;i++)if(farms[i])addDevelopedField(i);
         // 更新旗帜
@@ -3457,7 +3409,6 @@ window.onunhandledrejection=function(e){
         else if(ui==="territory"){territoryEnabled=!territoryEnabled;renderHUD()}
         else if(ui==="weather"){showWeatherInfo()}
         else if(ui==="guide"){S.guideHidden=!S.guideHidden;if(!S.guideHidden)renderGuide();else $("guide").classList.add("hidden");saveQuiet()}
-        else if(ui==="realm"){$("realm").classList.toggle("open")}
         else if(ui==="save"){saveGame()}
         else if(ui==="help"){showHelp()}
         else if(ui==="guideHide"){S.guideHidden=true;$("guide").classList.add("hidden");saveQuiet()}
@@ -3475,7 +3426,7 @@ window.onunhandledrejection=function(e){
     function showHelp(){
       showModal(`<h2>军政手册</h2>
         <h3>操作</h3>
-        <p>· 左键拖动：旋转视角<br>· Shift+左键拖动 / 中键拖动：平移视角<br>· 左键点击：选中城邑 / 军队 / 土地<br>· 滚轮：缩放<br>· WASD：移动视角，QE 旋转<br>· 空格：结束本旬<br>· ESC：取消当前操作 / 关闭对话框</p>
+        <p>· 左键拖动：平移视角<br>· 右键拖动 / Shift+拖动：旋转视角<br>· 滚轮：缩放<br>· WASD：移动视角，QE 旋转<br>· 空格：结束本旬<br>· ESC：取消当前操作 / 关闭对话框</p>
         <h3>资源</h3>
         <p>· <b>金钱</b>：征募、建设、外交的基础<br>· <b>粮秣</b>：供养军队，缺粮则兵溃<br>· <b>木材</b>：建筑和攻城器械所需<br>· <b>铁料</b>：打造兵器甲胄</p>
         <h3>兵种</h3>
@@ -3514,7 +3465,6 @@ window.onunhandledrejection=function(e){
           $("hud").classList.remove("hidden");
           resetUI();
           focusSite(F[S.player].cap);
-          applySelection(S.selected);
         }else{toast("读取存档失败。")}
       };
       $("importStart").onclick=()=>importControl.click();
@@ -3529,7 +3479,6 @@ window.onunhandledrejection=function(e){
       $("hud").classList.remove("hidden");
       resetUI();
       focusSite(F[player].cap);
-      applySelection();
       log("受命于天，既寿永昌。");
       // 启动背景音乐
       try{MusicSys.start()}catch(e){}
@@ -3547,14 +3496,12 @@ window.onunhandledrejection=function(e){
           if(data.version!==4)throw Error("存档版本不兼容");
           S=data;
           initializeOwners();
-          weather={type:(S.weather&&S.weather.type)||"clear",intensity:0,days:(S.weather&&S.weather.days)||0};
           for(let i=0;i<TOTAL;i++)if(farms[i])addDevelopedField(i);
           for(let i=0;i<S.sites.length;i++)updateSiteFlag(i);
           $("start").classList.add("hidden");
           $("hud").classList.remove("hidden");
           resetUI();
           focusSite(F[S.player].cap);
-          applySelection(S.selected);
           toast("存档导入成功。");
         }catch(err){toast("导入失败："+err.message)}
       };
@@ -3686,7 +3633,6 @@ window.onunhandledrejection=function(e){
     // ==================== 背景音乐系统（古风战略风格 · 多段式）====================
     const MusicSys=(()=>{
       let ctx=null,masterGain=null,playing=false;
-      let dryGain=null,wetGain=null,schedTimer=null;
       let volume=0.35;
       // 五声音阶（宫商角徵羽）- D大调，三个八度
       const scale=[146.83,164.81,185,220,246.94,293.66,329.63,369.99,440,493.88,587.33,659.25,739.99,880,987.77];
@@ -3760,19 +3706,9 @@ window.onunhandledrejection=function(e){
       // === 音色生成器 ===
       // 频率有效性检查
       function validFreq(f){return isFinite(f)&&f>20&&f<20000?f:440}
-      // 立体声输出（pan: -1左 ~ 1右）
-      function connectOut(node,pan=0){
-        if(ctx.createStereoPanner){
-          const p=ctx.createStereoPanner();p.pan.value=pan;
-          node.connect(p);p.connect(masterGain);
-        }else node.connect(masterGain);
-      }
       // 古筝/琵琶拨弦
-      function pluck(freq,time,dur=1.2,vol=0.15,pan=0){
+      function pluck(freq,time,dur=1.2,vol=0.15){
         freq=validFreq(freq);
-        // 人性化：每次拨弦力度与音高有细微随机变化，模拟真实演奏
-        vol*=.85+Math.random()*.3;
-        freq*=1+(Math.random()-.5)*.0018;
         const osc=ctx.createOscillator();
         const gain=ctx.createGain();
         osc.type="triangle";
@@ -3788,8 +3724,8 @@ window.onunhandledrejection=function(e){
         gain2.gain.setValueAtTime(0,time);
         gain2.gain.linearRampToValueAtTime(vol*.25,time+.008);
         gain2.gain.exponentialRampToValueAtTime(.001,time+dur*.7);
-        osc.connect(gain);connectOut(gain,pan);
-        osc2.connect(gain2);connectOut(gain2,pan);
+        osc.connect(gain);gain.connect(masterGain);
+        osc2.connect(gain2);gain2.connect(masterGain);
         osc.start(time);osc.stop(time+dur);
         osc2.start(time);osc2.stop(time+dur);
       }
@@ -3817,8 +3753,8 @@ window.onunhandledrejection=function(e){
         gain.gain.linearRampToValueAtTime(vol,time+.12);
         gain.gain.linearRampToValueAtTime(vol*.85,time+dur*.4);
         gain.gain.linearRampToValueAtTime(.001,time+dur);
-        osc.connect(gain);connectOut(gain,-.25);
-        noise.connect(noiseGain);connectOut(noiseGain,-.2);
+        osc.connect(gain);gain.connect(masterGain);
+        noise.connect(noiseGain);noiseGain.connect(masterGain);
         osc.start(time);osc.stop(time+dur);
         noise.start(time);noise.stop(time+dur);
         lfo.start(time);lfo.stop(time+dur);
@@ -3846,7 +3782,7 @@ window.onunhandledrejection=function(e){
         gain.gain.linearRampToValueAtTime(vol,time+.2);
         gain.gain.linearRampToValueAtTime(vol*.9,time+dur*.6);
         gain.gain.linearRampToValueAtTime(.001,time+dur);
-        osc.connect(filt);filt.connect(gain);connectOut(gain,.3);
+        osc.connect(filt);filt.connect(gain);gain.connect(masterGain);
         osc.start(time);osc.stop(time+dur);
         vibrato.start(time);vibrato.stop(time+dur);
       }
@@ -3907,7 +3843,7 @@ window.onunhandledrejection=function(e){
         gain.gain.linearRampToValueAtTime(vol,time+.02);
         gain.gain.exponentialRampToValueAtTime(vol*.3,time+.3);
         gain.gain.exponentialRampToValueAtTime(.001,time+dur);
-        osc.connect(gain);osc2.connect(gain);connectOut(gain,0);
+        osc.connect(gain);osc2.connect(gain);gain.connect(masterGain);
         osc.start(time);osc.stop(time+dur);
         osc2.start(time);osc2.stop(time+dur);
       }
@@ -3949,13 +3885,10 @@ window.onunhandledrejection=function(e){
       }
       function stopPad(){
         if(!padGain)return;
-        // 先摘除引用再淡出：防止 2.2 秒内重新开始音乐时，旧的清理定时器误杀新的弦乐垫
-        const dying=padOscs;
-        const g=padGain;
-        padOscs=[];padGain=null;
-        g.gain.linearRampToValueAtTime(0,ctx.currentTime+2);
+        padGain.gain.linearRampToValueAtTime(0,ctx.currentTime+2);
         setTimeout(()=>{
-          dying.forEach(o=>{try{o.osc.stop();o.lfo.stop()}catch(e){}});
+          padOscs.forEach(o=>{try{o.osc.stop();o.lfo.stop()}catch(e){}});
+          padOscs=[];padGain=null;
         },2200);
       }
 
@@ -3973,15 +3906,7 @@ window.onunhandledrejection=function(e){
         if(!playing)return;
         const now=ctx.currentTime;
         if(nextNoteTime<now+.05)nextNoteTime=now+.05;
-        // 前瞻调度：一次性排布未来约1.2秒内的所有音符。
-        // 即使浏览器在后台节流定时器或游戏短暂卡顿，音乐也不会断流。
-        let guard=0;
-        while(playing&&nextNoteTime<now+1.2&&guard++<24){
-          scheduleStep();
-        }
-      }
 
-      function scheduleStep(){
         const phrase=getCurrentPhrase();
         const chordRoot=phrase.chord;
         const chordNotes=chordProg[chordRoot%chordProg.length];
@@ -4004,13 +3929,13 @@ window.onunhandledrejection=function(e){
           noteIdx++;
         }
 
-        // --- 古筝琶音（每半拍一个音，左右声道交替营造宽度）---
+        // --- 古筝琶音（每半拍一个音）---
         const arpPat=arpPatterns[arpIdx%arpPatterns.length];
         const arpNote=chordNotes[arpPat[arpStep%arpPat.length]];
         const arpFreq=scale[Math.max(0,Math.min(scale.length-1,arpNote+5))];
         // B段更快，A段稀疏
         if(section===1 || beatInBar%2===0){
-          pluck(arpFreq,nextNoteTime,subBeat*1.5,section===1?.05:.035,arpStep%2?.22:-.22);
+          pluck(arpFreq,nextNoteTime,subBeat*1.5,section===1?.05:.035);
         }
         arpStep++;
         // 每拍换琶音方向
@@ -4042,25 +3967,30 @@ window.onunhandledrejection=function(e){
           clap(nextNoteTime+subBeat*.5,.025);
         }
 
-        // --- 编钟点缀（每小节开始，A/C段）---
-        if(beatInBar===0&&(section===0||section===2)){
+        // --- 编钟点缀（每小节开始）---
+        if(beatInBar===0&&section===0){
           const bellNote=chordNotes[3]+2;
           const bellFreq=scale[Math.max(0,Math.min(scale.length-1,bellNote+5))];
-          bell(bellFreq,nextNoteTime,3,section===0?.04:.03);
+          bell(bellFreq,nextNoteTime,3,.04);
         }
 
-        // --- 二胡副旋律（A段轻柔铺垫，B段明显）---
-        if((section===0||section===1)&&beatInBar===2){
+        // --- 二胡副旋律（B段加入）---
+        if(section===1&&beatInBar===2){
           const ehNote=chordNotes[2]+2;
           const ehFreq=scale[Math.max(0,Math.min(scale.length-1,ehNote+5))];
-          erhu(ehFreq,nextNoteTime,subBeat*5,section===1?.05:.028);
+          erhu(ehFreq,nextNoteTime,subBeat*5,.05);
         }
 
         // 推进
         beatCount++;
         nextNoteTime+=subBeat;
 
-        // 每8拍换乐句
+        // 乐句结束检查
+        let noteSum=0;
+        for(let i=0;i<noteIdx;i++)noteSum+=phrase.notes[i][1];
+        // 半拍为单位，计算总长度
+        let totalBeats=phrase.notes.reduce((s,n)=>s+n[1],0);
+        // 简化：每8拍换乐句
         if(beatCount%8===0){
           phraseIdx++;
           noteIdx=0;
@@ -4073,6 +4003,10 @@ window.onunhandledrejection=function(e){
             beatDur=60/bpm;subBeat=beatDur/2;
           }
         }
+
+        // 调度下一个
+        const delay=(nextNoteTime-ctx.currentTime)*1000;
+        setTimeout(scheduleNext,Math.max(40,delay-80));
       }
 
       function start(){
@@ -4085,16 +4019,12 @@ window.onunhandledrejection=function(e){
         nextNoteTime=ctx.currentTime+.8;
         startPad();
         scheduleNext();
-        // 调度心跳：每 300ms 补排未来音符
-        if(schedTimer)clearInterval(schedTimer);
-        schedTimer=setInterval(()=>{if(playing&&ctx){try{scheduleNext()}catch(e){}}},300);
         $("musicToggle").textContent="♫";
         $("musicToggle").title="暂停";
       }
 
       function stop(){
         playing=false;
-        if(schedTimer){clearInterval(schedTimer);schedTimer=null}
         stopPad();
         $("musicToggle").textContent="♪";
         $("musicToggle").title="播放";
@@ -4104,26 +4034,8 @@ window.onunhandledrejection=function(e){
         if(ctx)return;
         ctx=new (window.AudioContext||window.webkitAudioContext)();
         masterGain=ctx.createGain();
-        masterGain.gain.value=0;
-        // 混响（程序化生成脉冲响应，营造山谷回响的空间感）
-        const reverb=ctx.createConvolver();
-        const len=Math.floor(ctx.sampleRate*2.4),ir=ctx.createBuffer(2,len,ctx.sampleRate);
-        for(let ch=0;ch<2;ch++){
-          const d=ir.getChannelData(ch);
-          for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.6)*.5;
-        }
-        reverb.buffer=ir;
-        dryGain=ctx.createGain();dryGain.gain.value=.85;
-        wetGain=ctx.createGain();wetGain.gain.value=.26;
-        // 压缩器：防止多声部叠加时爆音
-        const comp=ctx.createDynamicsCompressor();
-        comp.threshold.value=-18;comp.knee.value=24;comp.ratio.value=4;
-        comp.attack.value=.01;comp.release.value=.3;
-        masterGain.connect(dryGain);dryGain.connect(comp);
-        masterGain.connect(reverb);reverb.connect(wetGain);wetGain.connect(comp);
-        comp.connect(ctx.destination);
-        // 音量平滑淡入，避免开始播放时的"咔"声
-        masterGain.gain.setTargetAtTime(volume,ctx.currentTime,1.2);
+        masterGain.gain.value=volume;
+        masterGain.connect(ctx.destination);
       }
 
       function toggle(){
@@ -4131,7 +4043,7 @@ window.onunhandledrejection=function(e){
       }
       function setVolume(v){
         volume=v;
-        if(masterGain&&ctx)masterGain.gain.setTargetAtTime(v,ctx.currentTime,.08);
+        if(masterGain)masterGain.gain.value=v;
       }
 
       return {start,stop,toggle,setVolume,get playing(){return playing}};
