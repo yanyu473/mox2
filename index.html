@@ -2186,6 +2186,16 @@ window.onunhandledrejection=function(e){
       renderHUD();renderInspector();renderGuide();syncArmies();miniDirty=true;renderTech();renderDiplo();
     }
 
+    // 应用选中状态（无有效选中时默认选中都城，避免右侧出现空面板）
+    function applySelection(sel){
+      if(!S)return;
+      if(sel&&sel.kind==="site"&&S.sites[sel.id])activeSelection=sel;
+      else if(sel&&sel.kind==="army"&&S.armies.find(a=>a.id===sel.id))activeSelection=sel;
+      else if(sel&&sel.kind==="tile")activeSelection=sel;
+      else activeSelection={kind:"site",id:F[S.player].cap};
+      S.selected=activeSelection;selectOutline();renderInspector();drawRouteForSelection();
+    }
+
     // HUD渲染
     function renderHUD(){
       if(!S)return;
@@ -2216,8 +2226,10 @@ window.onunhandledrejection=function(e){
 
     // 检查器渲染
     function renderInspector(){
-      if(!S||!activeSelection)return;
-      const a=$("inspectActions"),st=$("inspectStats");
+      const insp=$("inspector");
+      if(!S||!activeSelection){insp.style.display="none";return}
+      insp.style.display="";
+      const a=insp,st=$("inspectStats");
       if(activeSelection.kind==="site"){
         const s=S.sites[activeSelection.id],mine=s.owner===S.player;
         $("inspectKicker").textContent=typeName[s.type]+" · "+Math.round(s.x+HALF)+","+Math.round(s.z+HALF);
@@ -3502,6 +3514,7 @@ window.onunhandledrejection=function(e){
           $("hud").classList.remove("hidden");
           resetUI();
           focusSite(F[S.player].cap);
+          applySelection(S.selected);
         }else{toast("读取存档失败。")}
       };
       $("importStart").onclick=()=>importControl.click();
@@ -3516,6 +3529,7 @@ window.onunhandledrejection=function(e){
       $("hud").classList.remove("hidden");
       resetUI();
       focusSite(F[player].cap);
+      applySelection();
       log("受命于天，既寿永昌。");
       // 启动背景音乐
       try{MusicSys.start()}catch(e){}
@@ -3540,6 +3554,7 @@ window.onunhandledrejection=function(e){
           $("hud").classList.remove("hidden");
           resetUI();
           focusSite(F[S.player].cap);
+          applySelection(S.selected);
           toast("存档导入成功。");
         }catch(err){toast("导入失败："+err.message)}
       };
