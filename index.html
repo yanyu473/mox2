@@ -2047,10 +2047,11 @@ window.onunhandledrejection=function(e){
       if(!inputPointer||B)return;
       const p=inputPointer,dx=e.clientX-p.x,dy=e.clientY-p.y;
       if(Math.hypot(e.clientX-p.sx,e.clientY-p.sy)>5)p.moved=true;
-      if(p.button===2||e.shiftKey){
+      // 左键拖拽=旋转视角，右键拖拽=平移视角，Shift+拖拽=旋转
+      if(p.button===0||p.button===2&&e.shiftKey){
         orbit.yaw-=dx*.005;orbit.pitch+=dy*.004;
         e.preventDefault();
-      }else{
+      }else if(p.button===2){
         const scale=orbit.distance*.0012;
         orbit.target.x+=(-dx*Math.cos(orbit.yaw)+dy*Math.sin(orbit.yaw))*scale;
         orbit.target.z+=(dx*Math.sin(orbit.yaw)+dy*Math.cos(orbit.yaw))*scale;
