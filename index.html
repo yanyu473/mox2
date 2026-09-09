@@ -1999,13 +1999,30 @@ window.onunhandledrejection=function(e){
       mapSelect(best>=0?{kind:"site",id:best}:{kind:"tile",id:i});
     }
 
-    $("view").addEventListener("contextmenu",e=>e.preventDefault());
+    // ==== 彻底阻止浏览器右键手势（前进/后退）====
+    // 全局拦截右键菜单
+    document.addEventListener("contextmenu",e=>e.preventDefault(),true);
+    // 全局拦截右键按下：从最外层就阻止，不让浏览器有机会识别手势
+    document.addEventListener("mousedown",e=>{
+      if(e.button===2){e.preventDefault();e.stopPropagation();}
+    },true);
+    // 全局拦截右键拖动
+    document.addEventListener("mousemove",e=>{
+      if(e.buttons&2)e.preventDefault();
+    },true);
+    // 全局拦截右键释放
+    document.addEventListener("mouseup",e=>{
+      if(e.button===2)e.preventDefault();
+    },true);
+    // 防止拖拽和文本选中
+    document.addEventListener("dragstart",e=>e.preventDefault());
+    document.addEventListener("selectstart",e=>e.preventDefault());
+
     $("view").addEventListener("pointerdown",e=>{
       if(B||!S)return;
       inputPointer={id:e.pointerId,x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY,button:e.button,moved:false};
       $("view").setPointerCapture(e.pointerId);
       orbit.goal=null;
-      // 阻止右键拖动触发浏览器前进/后退手势
       if(e.button===2)e.preventDefault();
     });
     $("view").addEventListener("pointermove",e=>{
@@ -2014,7 +2031,6 @@ window.onunhandledrejection=function(e){
       if(Math.hypot(e.clientX-p.sx,e.clientY-p.sy)>5)p.moved=true;
       if(p.button===2||e.shiftKey){
         orbit.yaw-=dx*.005;orbit.pitch+=dy*.004;
-        // 阻止右键拖动触发浏览器手势
         e.preventDefault();
       }else{
         const scale=orbit.distance*.0012;
@@ -2029,12 +2045,9 @@ window.onunhandledrejection=function(e){
       const p=inputPointer;inputPointer=null;
       try{$("view").releasePointerCapture(e.pointerId)}catch(error){}
       if(!p.moved&&p.button===0&&!B)terrainPick(e);
-      // 阻止右键释放时弹出系统菜单
       if(p.button===2)e.preventDefault();
     });
     $("view").addEventListener("pointercancel",()=>inputPointer=null);
-    $("view").addEventListener("dragstart",e=>e.preventDefault());
-    $("view").addEventListener("selectstart",e=>e.preventDefault());
     $("view").addEventListener("wheel",e=>{
       e.preventDefault();
       if(B)return;
