@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#172a29">
 <meta name="description" content="山河问鼎·九州宏图 - 一款古风三维策略游戏，六大诸侯国争霸九州，招募士兵、发展经济、研究科技、攻城略地，问鼎天下。">
 <meta name="keywords" content="策略游戏,三国,古风,3D游戏,slg,山河问鼎,九州宏图">
@@ -181,6 +181,45 @@ small,.muted{color:var(--dim)}
 @media(max-width:1250px){#realm{width:212px}#inspector{width:270px}#quickbar{left:240px;right:300px}.topbar{gap:12px}.logo small{display:none}#resources{gap:10px}#guide{width:280px}#endbar{left:310px}#logs{left:310px}#musicCtrl{left:16px}}
 @media(max-height:760px){#realm{max-height:calc(100% - 290px)}#inspector{max-height:calc(100% - 340px)}#minimapBox{height:180px;width:160px}#minimap{width:144px;height:144px}#realmStats{margin:5px 0}#guide{padding:11px}#guideText{min-height:40px;font-size:11px}#endbar{right:210px}}
 @media(max-width:900px){.topbar{padding:8px;gap:7px;min-height:62px}.logo{font-size:17px;letter-spacing:1px}#calendar{font-size:10px}#resources{gap:7px}.res b{font-size:11px}.res small{font-size:9px}#realm{display:none}#quickbar{left:8px;right:8px;top:70px}#quickbar button{padding:5px 7px;font-size:10px}#inspector{right:8px;top:115px;width:245px;max-height:calc(100% - 198px)}#guide{left:8px;bottom:81px;width:235px}#minimapBox{display:none}#endbar{left:8px;right:8px;bottom:8px}#logs{display:none}.startbox{padding:20px}.starttitle{font-size:32px}#factionCards{grid-template-columns:1fr 1fr}.factioncard{min-height:175px;padding:12px}.factioncard p{margin-top:6px;font-size:11px}.factioncard small{margin-top:6px}.startsub{font-size:11px;margin-bottom:15px}.startfoot{margin-top:14px;flex-wrap:wrap}#battleCommands{min-width:95vw;padding:9px}#battleCommands button{font-size:11px;padding:6px}.startnote{margin-top:10px}#orderHint{top:112px;width:90vw;font-size:11px}}
+/* ==== 移动端触屏虚拟按键 ==== */
+#touchUI{position:absolute;inset:0;pointer-events:none;z-index:70;display:none}
+body.touch #touchUI{display:block}
+#touchUI .ydpad{position:absolute;left:10px;bottom:80px;display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(3,48px);gap:4px;pointer-events:auto}
+#touchUI .ydpad2{position:absolute;right:10px;bottom:80px;display:grid;grid-template-columns:repeat(2,48px);grid-template-rows:repeat(2,48px);gap:4px;pointer-events:auto}
+#touchUI .ydbtn{width:48px;height:48px;border-radius:12px;background:#102823e8;border:1px solid #c9b26a66;color:#f2d697;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+#touchUI .ydbtn:active{background:#2c4b3a;border-color:#e8cf8f}
+#ydUp{grid-column:2;grid-row:1}
+#ydLeft{grid-column:1;grid-row:2}
+#ydRight{grid-column:3;grid-row:2}
+#ydDown{grid-column:2;grid-row:3}
+/* ==== 手机窄屏适配 ==== */
+@media(max-width:560px){
+  .topbar{flex-wrap:wrap;gap:6px;padding:7px 8px;min-height:0}
+  .logo{font-size:14px;letter-spacing:2px}
+  #resources{gap:8px}
+  .res b{font-size:11px}
+  .res small{font-size:8px}
+  #quickbar{left:6px;right:6px;top:78px;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding-bottom:2px}
+  #quickbar button{white-space:nowrap;flex:0 0 auto;font-size:10px;padding:5px 7px}
+  #inspector{left:6px;right:6px;top:120px;width:auto;max-height:calc(100% - 290px);padding:13px}
+  #guide{left:50%;transform:translateX(-50%);bottom:150px;width:88vw}
+  #musicCtrl{left:50%;transform:translateX(-50%);bottom:80px;padding:5px 9px}
+  #musicCtrl .musicName{display:none}
+  #musicCtrl .volSlider{width:56px}
+  #endbar{padding:7px 9px;gap:8px;min-height:56px}
+  #advance{min-width:96px;font-size:14px}
+  .starttitle{font-size:24px;letter-spacing:6px}
+  #factionCards{grid-template-columns:1fr}
+  .factioncard{min-height:auto;padding:12px}
+  .startfoot{flex-direction:column;align-items:stretch}
+  .startfoot select{width:100%}
+  .dialog{padding:15px;max-height:82vh}
+  .dialog .choices{grid-template-columns:1fr 1fr}
+  .dialog .pair{grid-template-columns:1fr}
+  #battleCommands{min-width:94vw;padding:8px;gap:5px}
+  #orderHint{top:150px}
+  #toast{top:auto;bottom:150px}
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
@@ -260,6 +299,21 @@ small,.muted{color:var(--dim)}
   <div id="endbar" class="pane">
     <div id="turnStatus"></div>
     <button id="advance" class="gold">结束本旬 ›</button>
+  </div>
+</div>
+
+<div id="touchUI">
+  <div class="ydpad">
+    <button class="ydbtn" id="ydUp" data-key="w" aria-label="前进">▲</button>
+    <button class="ydbtn" id="ydLeft" data-key="a" aria-label="左移">◀</button>
+    <button class="ydbtn" id="ydDown" data-key="s" aria-label="后退">▼</button>
+    <button class="ydbtn" id="ydRight" data-key="d" aria-label="右移">▶</button>
+  </div>
+  <div class="ydpad2">
+    <button class="ydbtn" id="ydRotL" data-key="q" aria-label="左转">⟲</button>
+    <button class="ydbtn" id="ydRotR" data-key="e" aria-label="右转">⟳</button>
+    <button class="ydbtn" id="ydZoomIn" aria-label="放大">＋</button>
+    <button class="ydbtn" id="ydZoomOut" aria-label="缩小">－</button>
   </div>
 </div>
 
@@ -797,11 +851,6 @@ window.onunhandledrejection=function(e){
 
     bootProgress("砌筑青砖、瓦顶与关城",34);
     renderer=new T.WebGLRenderer({canvas:$("view"),antialias:true,powerPreference:"high-performance"});
-    renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.4));
-    renderer.setSize(innerWidth,innerHeight,false);
-    // 强制设置canvas尺寸，避免CSS覆盖
-    $("view").style.width=innerWidth+"px";
-    $("view").style.height=innerHeight+"px";
     renderer.outputEncoding=T.sRGBEncoding;
     renderer.toneMapping=T.ACESFilmicToneMapping;
     renderer.toneMappingExposure=1.08;
@@ -810,8 +859,26 @@ window.onunhandledrejection=function(e){
     scene=new T.Scene();
     scene.background=new T.Color("#b9c9b5");
     scene.fog=new T.FogExp2("#b9c9b5",.0022);
-    camera=new T.PerspectiveCamera(42,innerWidth/innerHeight,.15,1500);
+    camera=new T.PerspectiveCamera(42,1,.15,1500);
     currentScene=scene;currentCamera=camera;
+
+    // 统一管理视口尺寸，杜绝桌面端右半边黑屏并兼容手机横竖屏
+    let VIEW_W=1,VIEW_H=1;
+    function viewportSize(){
+      const w=window.innerWidth||document.documentElement.clientWidth||screen.width||800;
+      const h=window.innerHeight||document.documentElement.clientHeight||screen.height||600;
+      return [Math.max(1,Math.floor(w)),Math.max(1,Math.floor(h))];
+    }
+    function resizeRenderer(){
+      const s=viewportSize();VIEW_W=s[0];VIEW_H=s[1];
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.4));
+      renderer.setSize(VIEW_W,VIEW_H,false);
+      $("view").style.width=VIEW_W+"px";
+      $("view").style.height=VIEW_H+"px";
+      camera.aspect=VIEW_W/VIEW_H;
+      camera.updateProjectionMatrix();
+    }
+    resizeRenderer();
     world=new T.Group();scene.add(world);world.add(statics);
     const hemi=new T.HemisphereLight("#e4f0e6","#535037",.82);scene.add(hemi);
     shadowSun=new T.DirectionalLight("#fff0ce",1.25);
@@ -2036,37 +2103,79 @@ window.onunhandledrejection=function(e){
     document.addEventListener("dragstart",e=>e.preventDefault());
     document.addEventListener("selectstart",e=>e.preventDefault());
 
+    // 统一指针输入：同时支持鼠标与多点触控（单指旋转 / 双指缩放+平移）
+    const pointers=new Map();
+    let pinchBase=0,pinchDist0=0,midX=0,midY=0,multiTouch=false;
     $("view").addEventListener("pointerdown",e=>{
       if(B||!S)return;
-      inputPointer={id:e.pointerId,x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY,button:e.button,moved:false};
-      $("view").setPointerCapture(e.pointerId);
-      orbit.goal=null;
+      pointers.set(e.pointerId,{id:e.pointerId,x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY,button:e.button,type:e.pointerType,moved:false});
+      try{$("view").setPointerCapture(e.pointerId)}catch(error){}
+      if(pointers.size===1){
+        const p=pointers.values().next().value;
+        inputPointer={id:e.pointerId,x:p.x,y:p.y,sx:p.sx,sy:p.sy,button:p.button,moved:false};
+        orbit.goal=null;
+      }else if(pointers.size===2){
+        inputPointer=null;multiTouch=true;
+        const pts=[...pointers.values()];
+        pinchBase=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y);
+        pinchDist0=orbit.distance;
+        midX=(pts[0].x+pts[1].x)/2;midY=(pts[0].y+pts[1].y)/2;
+      }
       if(e.button===2)e.preventDefault();
     });
     $("view").addEventListener("pointermove",e=>{
-      if(!inputPointer||B)return;
-      const p=inputPointer,dx=e.clientX-p.x,dy=e.clientY-p.y;
+      if(B||!pointers.has(e.pointerId))return;
+      const p=pointers.get(e.pointerId);
+      const dx=e.clientX-p.x,dy=e.clientY-p.y;
       if(Math.hypot(e.clientX-p.sx,e.clientY-p.sy)>5)p.moved=true;
-      // 左键拖拽=旋转视角，右键拖拽=平移视角，Shift+拖拽=旋转
-      if(p.button===0||p.button===2&&e.shiftKey){
-        orbit.yaw-=dx*.005;orbit.pitch+=dy*.004;
+      if(pointers.size===1){
+        if(!inputPointer)return;
+        // 左键/单指拖拽=旋转视角，右键拖拽=平移视角，Shift+拖拽=旋转
+        if(p.type==="touch"||p.button===0||(p.button===2&&e.shiftKey)){
+          orbit.yaw-=dx*.005;orbit.pitch+=dy*.004;
+          e.preventDefault();
+        }else if(p.button===2){
+          const scale=orbit.distance*.0012;
+          orbit.target.x+=(-dx*Math.cos(orbit.yaw)+dy*Math.sin(orbit.yaw))*scale;
+          orbit.target.z+=(dx*Math.sin(orbit.yaw)+dy*Math.cos(orbit.yaw))*scale;
+          orbit.target.y=terrainHeight?terrainHeight(orbit.target.x,orbit.target.z):height(orbit.target.x,orbit.target.z);
+        }
+        p.x=e.clientX;p.y=e.clientY;updateCamera();
+      }else if(pointers.size===2){
         e.preventDefault();
-      }else if(p.button===2){
-        const scale=orbit.distance*.0012;
-        orbit.target.x+=(-dx*Math.cos(orbit.yaw)+dy*Math.sin(orbit.yaw))*scale;
-        orbit.target.z+=(dx*Math.sin(orbit.yaw)+dy*Math.cos(orbit.yaw))*scale;
+        const pts=[...pointers.values()];
+        const d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y);
+        const nmx=(pts[0].x+pts[1].x)/2,nmy=(pts[0].y+pts[1].y)/2;
+        if(pinchBase>0&&d>0)orbit.distance=Math.max(15,Math.min(720,pinchDist0*pinchBase/d));
+        const mx=nmx-midX,my=nmy-midY,sc=orbit.distance*.0012;
+        orbit.target.x+=(-mx*Math.cos(orbit.yaw)+my*Math.sin(orbit.yaw))*sc;
+        orbit.target.z+=(mx*Math.sin(orbit.yaw)+my*Math.cos(orbit.yaw))*sc;
         orbit.target.y=terrainHeight?terrainHeight(orbit.target.x,orbit.target.z):height(orbit.target.x,orbit.target.z);
+        midX=nmx;midY=nmy;p.x=e.clientX;p.y=e.clientY;updateCamera();
       }
-      p.x=e.clientX;p.y=e.clientY;updateCamera();
     });
     $("view").addEventListener("pointerup",e=>{
-      if(!inputPointer)return;
-      const p=inputPointer;inputPointer=null;
+      if(!pointers.has(e.pointerId))return;
+      const p=pointers.get(e.pointerId);
+      pointers.delete(e.pointerId);
       try{$("view").releasePointerCapture(e.pointerId)}catch(error){}
-      if(!p.moved&&p.button===0&&!B)terrainPick(e);
-      if(p.button===2)e.preventDefault();
+      if(pointers.size===0){
+        const wasTap=!p.moved&&p.button===0&&!multiTouch;
+        inputPointer=null;multiTouch=false;pinchBase=0;
+        if(wasTap&&!B)terrainPick(e);
+        if(p.button===2)e.preventDefault();
+      }else if(pointers.size===1){
+        const q=pointers.values().next().value;
+        inputPointer={id:q.id,x:q.x,y:q.y,sx:q.x,sy:q.y,button:q.button,moved:q.moved};
+        orbit.goal=null;
+      }
     });
-    $("view").addEventListener("pointercancel",()=>inputPointer=null);
+    $("view").addEventListener("pointercancel",e=>{
+      if(!pointers.has(e.pointerId))return;
+      pointers.delete(e.pointerId);
+      if(pointers.size===0){inputPointer=null;multiTouch=false;pinchBase=0;}
+      else if(pointers.size===1){const q=pointers.values().next().value;inputPointer={id:q.id,x:q.x,y:q.y,sx:q.x,sy:q.y,button:q.button,moved:q.moved};}
+    });
     $("view").addEventListener("wheel",e=>{
       e.preventDefault();
       if(B)return;
@@ -2082,6 +2191,33 @@ window.onunhandledrejection=function(e){
     document.addEventListener("keyup",e=>{
       keys[e.key.toLowerCase()]=false;
     });
+
+    // ==== 移动端触屏虚拟按键 ====
+    (function setupTouchUI(){
+      function enable(){document.body.classList.add("touch");}
+      const mq=window.matchMedia&&matchMedia("(pointer:coarse)");
+      if(mq&&mq.matches)enable();
+      window.addEventListener("pointerdown",e=>{if(e.pointerType==="touch")enable();},{capture:true,passive:true});
+      const tui=$("touchUI");if(!tui)return;
+      function bindHold(el,onStart,onStop){
+        let timer=null;
+        function stop(){if(timer){clearInterval(timer);timer=null;}if(onStop)onStop();}
+        el.addEventListener("pointerdown",e=>{
+          e.preventDefault();e.stopPropagation();
+          try{el.setPointerCapture(e.pointerId)}catch(err){}
+          onStart();if(timer===null)timer=setInterval(onStart,90);
+        });
+        el.addEventListener("pointerup",stop);
+        el.addEventListener("pointercancel",stop);
+        el.addEventListener("pointerleave",stop);
+      }
+      tui.querySelectorAll("[data-key]").forEach(btn=>{
+        const k=btn.dataset.key;
+        bindHold(btn,()=>{keys[k]=true;},()=>{keys[k]=false;});
+      });
+      bindHold($("ydZoomIn"),()=>{if(!B){orbit.distance=Math.max(15,orbit.distance*.94);updateCamera();}},null);
+      bindHold($("ydZoomOut"),()=>{if(!B){orbit.distance=Math.min(720,orbit.distance*1.07);updateCamera();}},null);
+    })();
 
     // 经济系统
     function treasury(id=S.player){return S.factions[id]}
@@ -3527,14 +3663,10 @@ window.onunhandledrejection=function(e){
       world.add(routeVisual);
     }
 
-    // 窗口大小调整
-    addEventListener("resize",()=>{
-      renderer.setSize(innerWidth,innerHeight,false);
-      $("view").style.width=innerWidth+"px";
-      $("view").style.height=innerHeight+"px";
-      camera.aspect=innerWidth/innerHeight;
-      camera.updateProjectionMatrix();
-    });
+    // 窗口大小调整（含手机横竖屏与浏览器地址栏伸缩）
+    addEventListener("resize",resizeRenderer);
+    addEventListener("orientationchange",()=>setTimeout(resizeRenderer,60));
+    if(window.visualViewport)window.visualViewport.addEventListener("resize",resizeRenderer);
 
     // 主循环
     let lastTime=performance.now();
@@ -3626,8 +3758,8 @@ window.onunhandledrejection=function(e){
       }
 
       updateCamera();
-      // 确保视口为全屏（防止阴影渲染等操作改变视口）
-      renderer.setViewport(0,0,innerWidth,innerHeight);
+      // 确保视口为全屏（防止阴影渲染等操作改变视口）；使用统一视口尺寸，杜绝黑边
+      renderer.setViewport(0,0,VIEW_W,VIEW_H);
       renderer.render(currentScene,currentCamera);
     }
 
